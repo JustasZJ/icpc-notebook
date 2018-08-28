@@ -9,15 +9,15 @@ typedef long long ll;
 typedef long double ld;
 typedef pair<int, int>pii;
 const int maxn=1e5+100;
-template<int N>struct SegTree
+template<class T, int N>struct SegTree
 {
-    ll seg[N*4], lazy[N*4];
+    T seg[N*4], lazy[N*4];
     SegTree()
     {
         memset(seg, 0, sizeof seg);
         memset(lazy, 0, sizeof lazy);
     }
-    void build(ll arr[], int id=1, int l=0, int r=N)
+    void build(T arr[], int id=1, int l=0, int r=N)
     {
         if(r-l<2)
         {
@@ -29,9 +29,9 @@ template<int N>struct SegTree
         build(arr, id*2+1, mid, r);
         seg[id]=seg[id*2]+seg[id*2+1];
     }
-    void upd(int id, int l, int r, ll val)
+    void upd(int id, int l, int r, T val)
     {
-        seg[id]+=(ll)(r-l)*val;
+        seg[id]+=(T)(r-l)*val;
         lazy[id]+=val;
     }
     void shift(int id, int l, int r)
@@ -41,7 +41,7 @@ template<int N>struct SegTree
         upd(id*2+1, mid, r, lazy[id]);
         lazy[id]=0;
     }
-    void modify(int x, int y, ll val, int id=1, int l=0, int r=N)
+    void modify(int x, int y, T val, int id=1, int l=0, int r=N)
     {
         if(l>=y || r<=x)return;
         if(l>=x && r<=y)
@@ -55,7 +55,7 @@ template<int N>struct SegTree
         modify(x, y, val, id*2+1, mid, r);
         seg[id]=seg[id*2]+seg[id*2+1];
     }
-    ll query(int x, int y, int id=1, int l=0, int r=N)
+    T query(int x, int y, int id=1, int l=0, int r=N)
     {
         if(l>=y || r<=x)return 0;
         if(l>=x && r<=y)return seg[id];
@@ -67,5 +67,11 @@ template<int N>struct SegTree
 int main()
 {
     ios_base::sync_with_stdio(false), cin.tie(0);
+    SegTree<ll, 100000>tree;
+    tree.modify(1, 6, 2);
+    tree.modify(5, 7, 3);
+    cout<<tree.query(5, 7)<<"\n";
+    cout<<tree.query(1, 7)<<"\n";
+    cout<<tree.query(1, 4)<<"\n";
     return 0;
 }
