@@ -1,16 +1,18 @@
 /*
 * Description: Centroid Decomposition on trees
-* Verification: http://codeforces.com/contest/321/problem/C 
+* Verification: http://codeforces.com/contest/321/problem/C
 */
 #include <bits/stdc++.h>
 #define pb push_back
-#define CLR(a) memset(a, 0, sizeof a)
-#define SETDP(a) memset(a, -1, sizeof a)
-#define SETINF(a) memset(a, 127, sizeof a)
+#define all(a) a.begin(), a.end()
+#define sz(a) (int)a.size()
+#define x first
+#define y second
 using namespace std;
-const int maxn=1e5+100;
 typedef long long ll;
+typedef long double ld;
 typedef pair<int, int>pii;
+const int maxn=1e5+100;
 vector<int>adj[maxn];
 int n, sub[maxn], par[maxn];
 bool vis[maxn];
