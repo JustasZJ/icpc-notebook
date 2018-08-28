@@ -4,6 +4,16 @@
 * Verification: http://www.spoj.com/problems/ORDERSET/
 */
 #include <bits/stdc++.h>
+#define pb push_back
+#define all(a) a.begin(), a.end()
+#define sz(a) (int)a.size()
+#define x first
+#define y second
+using namespace std;
+typedef long long ll;
+typedef long double ld;
+typedef pair<int, int>pii;
+const int maxn=1e5+100;
 using namespace std;
 struct node
 {
