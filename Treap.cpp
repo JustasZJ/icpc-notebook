@@ -14,7 +14,6 @@ typedef long long ll;
 typedef long double ld;
 typedef pair<int, int>pii;
 const int maxn=1e5+100;
-using namespace std;
 struct node
 {
     int val, pri, sz;
