@@ -13,7 +13,6 @@ typedef long double ld;
 typedef pair<int, int>pii;
 const int maxn=1e5+100;
 const int maxlog=20;
-using namespace std;
 int depth[maxn];
 int par[maxn][maxlog];
 vector<int>adj[maxn];
