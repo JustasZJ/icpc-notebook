@@ -16,7 +16,6 @@ template<class T, int N>struct BIT
 {
     T f[N+1];
     BIT(){memset(f, 0, sizeof f);}
-
     void upd(int pos, T val)
     {
         for(; pos<=N; pos+=pos&-pos)
