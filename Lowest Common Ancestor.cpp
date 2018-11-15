@@ -1,43 +1,30 @@
 /*
 * Description: Offline Lowest Common Ancestor with NlogN preprocessing and logN query using binary lifting
 */
-#include <bits/stdc++.h>
-#define pb push_back
-#define all(a) a.begin(), a.end()
-#define sz(a) (int)a.size()
-#define x first
-#define y second
-using namespace std;
-typedef long long ll;
-typedef long double ld;
-typedef pair<int, int>pii;
 const int maxn=1e5+100;
 const int maxlog=20;
 int dep[maxn], anc[maxn][maxlog];
 vector<int>adj[maxn];
-void dfs(int v)
+void dfs(int v, int p=0)
 {
-    for(int i=1; i<maxlog; i++)
+    dep[v]=dep[p]+1;
+    anc[v][0]=p;
+    for(int i=1; i<18; i++)
         anc[v][i]=anc[anc[v][i-1]][i-1];
-    for(auto to:adj[v])
-    {
-        if(to==anc[v][0])continue;
-        anc[to][0]=v;
-        dep[to]=dep[v]+1;
-        dfs(to);
-    }
+    for(int to:adj[v])if(to != p)
+        dfs(to, v);
 }
-int lca(int v, int u)
+int lca(int a, int b)
 {
-    if(dep[v]<dep[u])swap(v, u);
-    for(int i=maxlog-1; i>=0; i--)
-        if(anc[v][i] && dep[anc[v][i]]>=dep[u])
-            v=anc[v][i];
-    if(v==u)return v;
-    for(int i=maxlog-1; i>=0; i--)
-        if(anc[v][i]!=anc[u][i])
-            v=anc[v][i], u=anc[u][i];
-    return anc[v][0];
+    if(dep[a] < dep[b])swap(a, b);
+    for(int i=17; i>=0; i--)
+        if(dep[anc[a][i]] >= dep[b])
+            a=anc[a][i];
+    if(a == b)return a;
+    for(int i=17; i>=0; i--)
+        if(anc[a][i] != anc[b][i])
+            a=anc[a][i], b=anc[b][i];
+    return anc[a][0];
 }
 int getDist(int v, int u)
 {
