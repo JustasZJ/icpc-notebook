@@ -24,7 +24,7 @@ void add(line a)
         siz--;
     hull[siz++] = a;
 }
-ll get(ll x)///general approach is ternary search
+ll get(ll x)///general approach is binary search
 {
     while(it + 1 < siz && hull[it].eval(x) > hull[it + 1].eval(x))///change to < for maximum
         it++;
