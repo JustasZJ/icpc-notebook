@@ -3,14 +3,14 @@ set<int>adj[maxn];
 vector<int>tour;
 void dfs(int v)
 {
-	for(auto it = adj[v].begin(); sz(adj[v]) > 0;)
-	{
-		int to = *it;
-		it = adj[v].erase(it);
-		adj[to].erase(v);
-		dfs(to);
-	}
-	tour.pb(v);
+    for(auto it = adj[v].begin(); sz(adj[v]) > 0;)
+    {
+        int to = *it;
+        it = adj[v].erase(it);
+        adj[to].erase(v);
+        dfs(to);
+    }
+    tour.pb(v);
 }
 int main()
 {
@@ -25,8 +25,8 @@ int main()
     }
     for(int i = 1; i <= n; i++)
     {
-    	if(sz(adj[i]) % 2 == 0)
-			++even;
+        if(sz(adj[i]) % 2 == 0)
+            ++even;
     }
     if(even != n && even != n - 2)
     {
@@ -36,14 +36,14 @@ int main()
     int start = 1;
     if(even == n - 2)
     {
-		for(int i = 1; i <= n; i++)
-		{
-			if(sz(adj[i]) % 2 == 1)
-			{
-				start = i;
-				break;
-			}
-		}
+        for(int i = 1; i <= n; i++)
+        {
+            if(sz(adj[i]) % 2 == 1)
+            {
+                start = i;
+                break;
+            }
+        }
     }
     dfs(start);
     for(int v : tour)
