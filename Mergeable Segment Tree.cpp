@@ -23,7 +23,7 @@ struct node
 int n, q, ans[maxn], nxt_id;
 node tree[maxn * 150];
 int root[105];
-pii split(int id, int k, int lo = 1, int hi = n) /// >= i desine
+pii split(int id, int k, int lo = 1, int hi = n) /// >= goes to the right
 {
 	if(!id) return {0, 0};
 	if(lo == hi)
@@ -51,7 +51,7 @@ int merge(int a, int b)
 	if(!b) return a;
 	tree[a].l = merge(tree[a].l, tree[b].l);
 	tree[a].r = merge(tree[a].r, tree[b].r);
-	return a; 
+	return a;
 }
 int ins(int id, int pos, int lo = 1, int hi = n)
 {
