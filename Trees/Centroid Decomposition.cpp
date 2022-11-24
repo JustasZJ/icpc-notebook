@@ -3,7 +3,7 @@
  * Verification: http://codeforces.com/contest/321/problem/C
  */
 #include <bits/stdc++.h>
-#define pb push_back
+#define push_back push_back
 #define all(a) a.begin(), a.end()
 #define sz(a) (int)a.size()
 #define x first
@@ -61,8 +61,8 @@ int main() {
 	for (int i = 0; i < n - 1; i++) {
 		int a, b;
 		cin >> a >> b;
-		adj[a].pb(b);
-		adj[b].pb(a);
+		adj[a].push_back(b);
+		adj[b].push_back(a);
 	}
 	solve(1);
 	for (int i = 1; i <= n; i++) {
