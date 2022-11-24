@@ -1,61 +1,51 @@
-int sgn(ll a)
-{
-	if(a > 0)
-		return 1;
-	if(a < 0)
-		return -1;
-	return 0;
+int sgn(ll a) {
+	return (a > 0) - (a < 0);
 }
-struct point
-{
+struct point {
 	ll x, y;
-	point(ll a = 0, ll b = 0)
-	{
+	point(ll a = 0, ll b = 0) {
 		x = a, y = b;
 	}
-	point operator+(const point &b) const
-	{
+	point operator+(const point &b) const {
 		return point(x + b.x, y + b.y);
 	}
-	point operator-(const point &b) const
-	{
+	point operator-(const point &b) const {
 		return point(x - b.x, y - b.y);
 	}
-	point operator*(const ll &a) const
-	{
+	point operator*(const ll &a) const {
 		return point(x * a, y * a);
 	}
-	ll vlen() // SQUARE ROOT NOT TAKEN
-	{
+	ll vlen() {
+		// SQUARE ROOT NOT TAKENs
 		return x * x + y * y; 
 	}
 };
-ll dot(point a, point b)
-{
+ll dot(point a, point b) {
 	return a.x * b.x + a.y * b.y;
 }
-ll cross(point a, point b)
-{
+ll cross(point a, point b) {
 	return a.x * b.y - a.y * b.x;
 }
-point proj(point v, point u) // projection of v onto u
-{
+point proj(point v, point u) {
+	// projection of v onto u
 	return u * (dot(v, u) / dot(u, u));
 }
-bool isect(point a, point b, point c, point d)
-{
+// check if line segments AB and CD intersect
+bool isect(point a, point b, point c, point d) {
 	int A = sgn(cross(c - a, d - a));
 	int B = sgn(cross(c - b, d - b));
-	if(A * B != 0 && A == B)
+	if (A * B != 0 && A == B) {
 		return false;
+	}
 	int C = sgn(cross(a - c, b - c));
 	int D = sgn(cross(a - d, b - d));
-	if(C * D != 0 && C == D)
+	if (C * D != 0 && C == D) {
 		return false;
+	}
 	return true;
 }
-point inter(point a, point b, point c, point d)
-{
+// intersection point of line segments AB and CD 
+point inter(point a, point b, point c, point d) {
 	point ab = b - a;
 	point cd = d - c;
 	ll top = cross(a, ab) - cross(c, ab);
