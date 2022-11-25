@@ -1,1 +1,1 @@
-# Competitive-programming algorithm templates
+# ICPC contest team reference
