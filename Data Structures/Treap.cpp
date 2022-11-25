@@ -1,8 +1,4 @@
-/*
-* Source: https://github.com/bqi343/USACO/blob/master/Implementations/09%20-%20Range%20Queries%20(2)/15.3%20-%20BBST%20(4)/Treap.cpp
-* Description: treap with max heap property
-* Verification: http://www.spoj.com/problems/ORDERSET/
-*/
+/* Description: treap with max heap property */
 #include <bits/stdc++.h>
 #define pb push_back
 #define all(a) a.begin(), a.end()

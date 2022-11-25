@@ -1,6 +1,4 @@
-/*
-* Description: BIT with range updates and point queries
-*/
+/* Description: BIT with range updates and point queries */
 #include <bits/stdc++.h>
 #define pb push_back
 #define all(a) a.begin(), a.end()

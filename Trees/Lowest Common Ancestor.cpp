@@ -1,6 +1,4 @@
-/*
- * Description: Offline Lowest Common Ancestor with NlogN preprocessing and logN query using binary lifting
- */
+/* Description: Offline Lowest Common Ancestor with NlogN preprocessing and logN query using binary lifting */
 const int maxn = 1e5 + 100;
 const int maxlog = 20;
 int dep[maxn], anc[maxn][maxlog];

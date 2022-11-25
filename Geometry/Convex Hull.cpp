@@ -1,7 +1,3 @@
-/*
-* Source: https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain
-* Description: NlogN Convex Hull
-*/
 #include <bits/stdc++.h>
 using namespace std;
 using ll = long long;

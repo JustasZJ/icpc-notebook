@@ -1,7 +1,4 @@
-/*
- * Description: Centroid Decomposition on trees
- * Verification: http://codeforces.com/contest/321/problem/C
- */
+/* Description: Centroid Decomposition on trees */
 #include <bits/stdc++.h>
 #define push_back push_back
 #define all(a) a.begin(), a.end()

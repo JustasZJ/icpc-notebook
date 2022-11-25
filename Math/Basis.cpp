@@ -1,6 +1,4 @@
-// Basis of vectors modulo 2 (for xor related problems)
-// https://codeforces.com/blog/entry/68953
-
+/* Basis of vectors modulo 2 (for xor related problems) */
 ll basis[62];
 void add(ll a) {
     for (int bit = 61; bit >= 0; bit--) {

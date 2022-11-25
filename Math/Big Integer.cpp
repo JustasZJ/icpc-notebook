@@ -1,6 +1,3 @@
-/*
- * Description: Big Integer struct
- */
 #include <bits/stdc++.h>
 #define pb push_back
 #define all(a) a.begin(), a.end()

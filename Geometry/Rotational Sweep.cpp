@@ -1,31 +1,42 @@
-/***
-https://codeforces.com/contest/1025/problem/F
-***/
 #include <bits/stdc++.h>
+#define pb push_back
+#define all(a) a.begin(), a.end()
+#define sz(a) (int)a.size()
+#define x first
+#define y second
+#define debug(...) "["<<#__VA_ARGS__<<": "<<__VA_ARGS__<<"]"
 using namespace std;
 typedef long long ll;
 typedef long double ld;
-struct point {
+typedef pair<int, int>pii;
+const int maxn = 1e6 + 100;
+const int mod = 1e9 + 7;
+mt19937 rng(chrono::high_resolution_clock::now().time_since_epoch().count());
+struct point
+{
     ll x, y;
-    point(ll a = 0, ll b = 0) {
-        x = a, y = b;
+    point() {}
+    point(ll a, ll b)
+    {
+        x=a;
+        y=b;
     }
-    point operator+(const point &o) {
-        return point(x + o.x, y + o.y);
+    point operator+(const point &o)
+    {
+        return point(x+o.x, y+o.y);
     }
-    point operator-(const point &o) {
-        return point(x - o.x, y - o.y);
+    point operator-(const point &o)
+    {
+        return point(x-o.x, y-o.y);
     }
 };
-ll dot(point a, point b) {
-    return a.x * b.x + a.y * b.y;
-}
-ll cross(point a, point b) {
-    return a.x * b.y - a.y * b.x;
+ll cross(point a, point b)
+{
+    return a.x*b.y-a.y*b.x;
 }
 int n;
 ll ans;
-vector<point> v;
+vector<point>v;
 void sweep(int id) {
     vector<point>u;
     for(int i = 0; i < n; i++) {
@@ -60,12 +71,10 @@ int main()
     ios_base::sync_with_stdio(false), cin.tie(0);
     cin >> n;
     v.resize(n);
-    for(int i = 0; i < n; i++) {
+    for(int i = 0; i < n; i++)
         cin >> v[i].x >> v[i].y;
-    }
-    for(int i = 0; i < n; i++) {
+    for(int i = 0; i < n; i++)
         sweep(i);
-    }
     cout << ans / 2 << "\n";
     return 0;
 }

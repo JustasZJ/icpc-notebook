@@ -1,7 +1,4 @@
-/*
-* Source: https://codeforces.com/blog/entry/70472?#comment-549341
-* Description: Implementation of vector with negative indexing
-*/
+/* Description: Implementation of vector with negative indexing */
 #include <bits/stdc++.h>
 using namespace std;
 

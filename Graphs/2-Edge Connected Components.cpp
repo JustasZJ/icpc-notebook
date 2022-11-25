@@ -1,7 +1,4 @@
-/*
- * Description: Finding 2-edge connected components using Tarjan's algorithm and DSU
- * Verification: https://codeforces.com/contest/1000/problem/E
- */
+/* Description: Finding 2-edge connected components using Tarjan's algorithm and DSU */
 #include <bits/stdc++.h>
 #define pb push_back
 using namespace std;
