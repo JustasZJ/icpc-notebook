@@ -32,6 +32,10 @@ struct point {
     point perp() const { 
         return point(-y, x); 
     }
+    // normalize vector
+    point toUnit() {
+        return *this / vlen();
+    }
 };
 ld dot(point a, point b) {
     return a.x * b.x + a.y * b.y;
@@ -104,17 +108,22 @@ bool insidePoly(point p, vector<point>poly) {
     }
     return cnt == 1;
 }
-// normalize vector
-point toUnitVec(point vec) {
-    return vec / vec.vlen();
-}
 // get unit vector that is orthogonal to given vector
 point getUnitOrthog(point vec) {
     if (abs(vec.x) < eps || abs(vec.y) < eps) {
         swap(vec.x, vec.y);
-        return toUnitVec(vec);
+        return vec.toUnit();
     }
     point orthog(1, 0);
     orthog.y = -orthog.x * vec.x / vec.y;
-    return toUnitVec(orthog);
+    return orthog.toUnit();
+}
+// circle with center c, radius r and line through points a and b
+vector<point> circleLine(point c, double r, point a, point b) {
+	point ab = b - a, p = a + ab * dot(c - a, ab) / ab.vlensq();
+	double s = cross(b - a, c - a), h2 = r*r - s*s / ab.vlensq();
+	if (h2 < 0) return {};
+	if (h2 == 0) return {p};
+	point h = ab.toUnit() * sqrt(h2);
+	return {p - h, p + h};
 }

@@ -1,6 +1,3 @@
-/***
-https://codeforces.com/contest/911/problem/G
-***/
 #include <bits/stdc++.h>
 #define pb push_back
 #define all(a) a.begin(), a.end()
