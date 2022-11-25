@@ -1,8 +1,10 @@
 template<class T> bool ckmin(T& a, const T& b) { return a > b ? a = b, 1 : 0; }
 template<class T> bool ckmax(T& a, const T& b) { return a < b ? a = b, 1 : 0; }
 
-int hungarian(const vector<vector<int> >& a) { 
-    int n = sz(a) - 1, m = sz(a[0]) - 1; // jobs 1..n, workers 1..m
+// jobs 1..n, workers 1..m
+// need row 0 (unused) of size m+1, otherwise runtime error
+int hungarian(const vector<vector<int>>& a) { 
+    int n = sz(a) - 1, m = sz(a[0]) - 1;
     vector<int> u(n + 1), v(m + 1); // potentials
     vector<int> p(m + 1); // p[j] -> job picked by worker j
     for(int i = 1; i <= n; i++) { // find alternating path with job i

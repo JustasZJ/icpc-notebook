@@ -13,3 +13,9 @@ Euler's formula:
 For a connected planar graph with v vertices, e edges and f faces (including outer)
 v - e + f = 2
 */
+// Mo's sorting order
+bool cmp(Query A, Query B)
+{
+  if (A.l / S != B.l / S) return A.l / S < B.l / S;
+  return A.r > B.r
+}

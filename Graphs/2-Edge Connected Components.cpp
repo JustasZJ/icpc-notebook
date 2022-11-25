@@ -5,7 +5,7 @@ using namespace std;
 typedef long long ll;
 typedef long double ld;
 const int maxn = 3e5 + 100;
-int n, m, val[maxn], low[maxn], timer = 1, par[maxn], sz[maxn], vis[maxn];
+int n, m, val[maxn], low[maxn], timer = 1, par[maxn], sz[maxn];
 vector<int> adj[maxn], g[maxn];
 vector<pair<int, int>> bridges;
 int root(int v) {
@@ -63,42 +63,8 @@ int main() {
     }
     tarjan(1);
     construct();
-    int v = 1, d = 0;
-    for (int i = 1; i <= n; i++) {
-        if (!g[i].empty()) {
-            v = i;
-        }
-    }
-    queue<pair<int, int>> Q;
-    Q.push({v, 0});
-    vis[v] = 1;
-    while (!Q.empty()) {
-        v = Q.front().first;
-        d = Q.front().second;
-        Q.pop();
-        for (auto to : g[v]) {
-            if (!vis[to]) {
-                vis[to] = 1;
-                Q.push({to, d + 1});
-            }
-        }
-    }
-    Q.push({v, 0});
-    for (int i = 0; i < maxn; i++) {
-        vis[i] = 0;
-    }
-    vis[v] = 1;
-    while (!Q.empty()) {
-        v = Q.front().first;
-        d = Q.front().second;
-        Q.pop();
-        for (auto to : g[v]) {
-            if (!vis[to]) {
-                vis[to] = 1;
-                Q.push({to, d + 1});
-            }
-        }
-    }
-    cout << d << "\n";
+    // constructs a tree from the graph
+    // edges are bridges in the original graph
+    // vertices are combined into 1 if they are 2-edge connected 
     return 0;
 }
