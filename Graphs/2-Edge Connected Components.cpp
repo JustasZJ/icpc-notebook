@@ -22,8 +22,10 @@ void unite(int a, int b) {
     par[b] = a;
     sz[a] += sz[b];
 }
+// comments are for articulation point code
 void tarjan(int v, int p = -1) {
     val[v] = low[v] = timer++;
+    // int children = 0;
     for (auto to : adj[v]) {
         if (to == p) {
             continue;
@@ -31,6 +33,9 @@ void tarjan(int v, int p = -1) {
         if (!val[to]) {
             tarjan(to, v);
             low[v] = min(low[v], low[to]);
+            // if (low[to] >= val[v] && p != -1)
+            //   IS_ARTICULATION_POINT(v);
+            // ++children;
             if (low[to] > val[v]) {
                 bridges.push_back({v, to});
             } else {
@@ -40,6 +45,8 @@ void tarjan(int v, int p = -1) {
             low[v] = min(low[v], val[to]);
         }
     }
+    // if (p == -1 && children > 1)
+    //   IS_ARTICULATION_POINT(v);
 }
 void construct() {
     for (pair<int, int> p : bridges) {

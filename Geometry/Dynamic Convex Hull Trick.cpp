@@ -6,6 +6,7 @@ struct Line {
     }
 };
  
+// Max hull, for minimum make k and m negative
 struct LineContainer : multiset<Line> {
     // (for doubles, use inf = 1/.0, div(a,b) = a/b)
     const ll inf = LLONG_MAX;
