@@ -1,7 +1,4 @@
-/*
-Works, but might be a little slow
-https://judge.yosupo.jp/submission/80957
-*/
+/* Works, but might be a little slow */
 bool is_prime(int a) {
     if (a == 1) {
         return false;
