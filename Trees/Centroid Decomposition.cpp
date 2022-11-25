@@ -18,56 +18,56 @@ int n, sub[maxn], par[maxn];
 bool vis[maxn];
 char ans[maxn];
 void dfs(int v) {
-	sub[v] = 1;
-	for (auto to : adj[v]) {
-		if (!vis[to] && to != par[v]) {
-			par[to] = v;
-			dfs(to);
-			sub[v] += sub[to];
-		}
-	}
+    sub[v] = 1;
+    for (auto to : adj[v]) {
+        if (!vis[to] && to != par[v]) {
+            par[to] = v;
+            dfs(to);
+            sub[v] += sub[to];
+        }
+    }
 }
 int get_centroid(int v) {
-	par[v] = 0;
-	dfs(v);
-	int sz = sub[v];
-	while (true) {
-		pii mx = {0, 0};
-		for (auto to : adj[v]) {
-			if (!vis[to] && par[v] != to) {
-				mx = max(mx, {sub[to], to});
-			}
-		}
-		if (mx.first * 2 > sz) {
-			v = mx.second;
-		} else {
-			return v;
-		}
-	}
+    par[v] = 0;
+    dfs(v);
+    int sz = sub[v];
+    while (true) {
+        pii mx = {0, 0};
+        for (auto to : adj[v]) {
+            if (!vis[to] && par[v] != to) {
+                mx = max(mx, {sub[to], to});
+            }
+        }
+        if (mx.first * 2 > sz) {
+            v = mx.second;
+        } else {
+            return v;
+        }
+    }
 }
 void solve(int v, int level = 0) {
-	v = get_centroid(v);
-	vis[v] = true;
-	ans[v] = (char)(level + 'A');
-	for (auto to : adj[v]) {
-		if (!vis[to]) {
-			solve(to, level + 1);
-		}
-	}
+    v = get_centroid(v);
+    vis[v] = true;
+    ans[v] = (char)(level + 'A');
+    for (auto to : adj[v]) {
+        if (!vis[to]) {
+            solve(to, level + 1);
+        }
+    }
 }
 int main() {
-	ios_base::sync_with_stdio(false), cin.tie(0);
-	cin >> n;
-	for (int i = 0; i < n - 1; i++) {
-		int a, b;
-		cin >> a >> b;
-		adj[a].push_back(b);
-		adj[b].push_back(a);
-	}
-	solve(1);
-	for (int i = 1; i <= n; i++) {
-		cout << ans[i] << " ";
-	}
-	cout << "\n";
-	return 0;
+    ios_base::sync_with_stdio(false), cin.tie(0);
+    cin >> n;
+    for (int i = 0; i < n - 1; i++) {
+        int a, b;
+        cin >> a >> b;
+        adj[a].push_back(b);
+        adj[b].push_back(a);
+    }
+    solve(1);
+    for (int i = 1; i <= n; i++) {
+        cout << ans[i] << " ";
+    }
+    cout << "\n";
+    return 0;
 }
